@@ -1,0 +1,82 @@
+{% extends 'index.html' %}
+{% block title %}
+<title>
+    Eshop | Login Page
+</title>
+{% endblock %}
+{% block content %}
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-sm-3"></div>
+        <div class="col-sm-6 my-2">
+            <h5 class="background text-light p-2 w-100 text-center my-2 rounded ">Update Profile Section</h5>
+            {% for i in messages %}
+            <div class="alert bg-danger text-center alert-warning alert-dismissible fade show text-light" role="alert">
+                {{i}}
+                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+            </div>
+            {% endfor %}
+            <form method="post" action="" enctype='multipart/form-data'>
+                {% csrf_token %}
+                <div class="row mb-3">
+                    <div class="col-md-6 col-12">
+                        <label class="form-label">Full Name</label>
+                        <input type="text" name="name" class="form-control" id="exampleInputEmail1"
+                            aria-describedby="emailHelp" value="{{user.name}}">
+                    </div>
+                    <div class="col-md-6 col-12">
+                        <label class="form-label">Profile Pic</label>
+                        <input value="{{user.pic}}" type="file" accept=".img, .jpg" name="pic" class="form-control">
+                    </div>
+                </div>
+                <div class="row mb-3">
+                    <div class="col-md-6 col-12">
+                        <label class="form-label">Email Address</label>
+                        <input value="{{user.email}}" type="email" name="email" class="form-control" id="exampleInputEmail1"
+                            aria-describedby="emailHelp">
+                    </div>
+                    <div class="col-md-6 col-12">
+                        <label class="form-label">Phone Number</label>
+                        <input value="{{user.phone}}" type="text" name="phone" class="form-control" id="exampleInputPassword1">
+                    </div>
+                </div>
+                <div class="row mb-3">
+                    <div class="col-md-6 col-12">
+                        <label class="form-label">House or Building Number</label>
+                        <input value="{{user.addressline1}}" type="text" name="addressline1" class="form-control" id="exampleInputEmail1"
+                            aria-describedby="emailHelp">
+                    </div>
+                    <div class="col-md-6 col-12">
+                        <label class="form-label">Street Number or NearBy</label>
+                        <input value="{{user.addressline2}}" type="text" name="addressline2" class="form-control" id="exampleInputPassword1">
+                    </div>
+                </div>
+                <div class="row mb-3">
+                    <div class="col-md-6 col-12">
+                        <label class="form-label">Village or Locality</label>
+                        <input value="{{user.addressline3}}" placeholder="Enter username " type="text" name="addressline3" class="form-control" id="exampleInputEmail1"
+                            aria-describedby="emailHelp">
+                    </div>
+                    <div class="col-md-6 col-12">
+                        <label class="form-label">Pin Code</label>
+                        <input value="{{user.pin}}" type="text" name="pin" class="form-control" id="exampleInputPassword1">
+                    </div>
+                </div>
+                <div class="row mb-3">
+                    <div class="col-md-6 col-12">
+                        <label class="form-label">City</label>
+                        <input value="{{user.city}}" type="text" name="city" class="form-control" id="exampleInputEmail1"
+                            aria-describedby="emailHelp">
+                    </div>
+                    <div class="col-md-6 col-12">
+                        <label class="form-label">State</label>
+                        <input value="{{user.state}}" type="text" name="state" class="form-control" id="exampleInputPassword1">
+                    </div>
+                </div>
+                <button type="submit" class="btn my-btn w-100 btn-sm background text-center text-light">Update</button>
+            </form>
+        </div>
+        <div class="col-sm-3"></div>
+    </div>
+</div>
+{% endblock content %}

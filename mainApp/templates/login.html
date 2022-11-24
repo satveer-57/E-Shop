@@ -1,0 +1,40 @@
+{% extends 'index.html' %}
+{% block title %}
+<title>
+    Eshop | Login Page
+</title>
+{% endblock %}
+{% block content %}
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-sm-4"></div>
+        <div class="col-sm-4 my-2">
+            <h5 class="background text-light p-2 w-100 text-center my-2 rounded ">Login Section</h5>
+            {% for i in messages %}
+            <div class="alert bg-danger text-center alert-warning alert-dismissible fade show text-light" role="alert">
+                {{i}}
+                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+            </div>
+            {% endfor %}
+            <form method="post" action="">
+                {% csrf_token %}
+                <div class="mb-3">
+                    <label class="form-label">Username</label>
+                    <input type="text" name="username" class="form-control" id="exampleInputEmail1"
+                        aria-describedby="emailHelp">
+                </div>
+                <div class="mb-3">
+                    <label class="form-label">Password</label>
+                    <input type="password" name="password" class="form-control" id="exampleInputPassword1">
+                </div>
+                <button type="submit" class="btn my-btn w-100 btn-sm background text-center text-light">Login</button>
+            </form>
+            <div class="d-flex justify-content-between">
+                <a href="/forget-username" class="text-decoration-none">Forget Password</a>
+                <a href="/signup/" class="text-decoration-none">New User ? Create a Free Account </a>
+            </div>
+        </div>
+        <div class="col-sm-4"></div>
+    </div>
+</div>
+{% endblock content %}

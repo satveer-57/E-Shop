@@ -1,0 +1,51 @@
+{% extends 'index.html' %}
+{% block title %}
+<title>Eshop || Shop</title>
+{% endblock title %}
+{% block content %}
+<div class="container-fluid ">
+    <div class="row my-2">
+        <div class="col-lg-2 col-md-3 col-sm-6 col-12">
+            <div class="list-group">
+                <h6 class="text-light background text-center p-1">Main Category</h6>
+                <a class="list-group-item list-group-item-action" href="/shop/All/{{sc}}/{{br}}">All</a>
+                {% for i in maincategory %}
+                <a class="list-group-item list-group-item-action" href="/shop/{{i.name}}/{{sc}}/{{br}}">{{ i.name }}</a>
+                {% endfor %}
+
+                <h6 class="text-light background text-center p-1">Sub Category</h6>
+                <a class="list-group-item list-group-item-action" href="/shop/{{mc}}/All/{{br}}">All</a>
+                {% for i in subcategory %}
+                <a class="list-group-item list-group-item-action" href="/shop/{{mc}}/{{i.name}}/{{br}}">{{ i.name }}</a>
+                {% endfor %}
+                
+                <h6 class="text-light background text-center p-1">Brand</h6>
+                <a class="list-group-item list-group-item-action" href="/shop/{{mc}}/{{sc}}/All">All</a>                
+                {% for i in brand %}
+                <a class="list-group-item list-group-item-action" href="/shop/{{mc}}/{{sc}}/{{i.name}}">{{ i.name }}</a>
+                {% endfor %}
+                
+
+            </div>
+        </div>
+        <div class="col-lg-10 col-md-9 col-sm-6 col-12">
+            <h5 class="background text-center p-2 text-light">Shop Section</h5>
+            <div class="row">
+                {% for item in data %}
+                <div class="col-xl-2 col-lg-3 col-md-4 col-sm-6 col-12">
+                    <div class="card mb-4">
+                        <img src="{{item.pic1.url}}" class="card-img-top" height="250px" alt="...">
+                        <div class="card-body">
+                            <h5 class="card-title">{{ item.name }}</h5>
+                            <p class="card-text">&#8377;<del>{{item.baseprice}}</del>&nbsp&nbsp<sub><b>{{item.finalprice }}</b></sub></p>
+                            <p class="card-text">Discount {{item.discount}}</p>
+                            <p class="card-text">{{item.color}}&nbsp&nbsp{{item.size}}</p>
+                            <a href="/single-product/{{item.id}}" class="btn background w-100 text-light btn-sm">Add to cart</a>
+                        </div>
+                    </div>
+                </div>
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+    {% endblock %}

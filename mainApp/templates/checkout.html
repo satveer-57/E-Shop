@@ -1,0 +1,117 @@
+{% extends 'index.html' %}
+{% block title %}
+<title>Eshop | Check Out</title>
+{% endblock %}
+{% block content %}
+<h1 class="background text-light text-center mt-2 p-2 ">Check Out Page</h1>
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-sm-6 col-12">
+            <h5 class="background text-light p-2 text-center">Billing Details</h5>
+            <table class="table table-bordered table-striped table-hover">
+                <tr>
+                    <th>Full Name</th>
+                    <td>{{user.name}}</td>
+                </tr>
+                <tr>
+                    <th>Username</th>
+                    <td>{{user.username}}</td>
+                </tr>
+                <tr>
+                    <th>Email Address</th>
+                    <td>{{user.email}}</td>
+                </tr>
+                <tr>
+                    <th>Phone</th>
+                    <td>{{user.phone}}</td>
+                </tr>
+                <tr>
+                    <th>House Number or Building Number</th>
+                    <td>{{user.addressline1}}</td>
+                </tr>
+                <tr>
+                    <th>Street Number or Near By</th>
+                    <td>{{user.addressline2}}</td>
+                </tr>
+                <tr>
+                    <th>Village or Locality</th>
+                    <td>{{user.addressline3}}</td>
+                </tr>
+                <tr>
+                    <th>City</th>
+                    <td>{{user.city}}</td>
+                </tr>
+                <tr>
+                    <th>State</th>
+                    <td>{{user.state}}</td>
+                </tr>
+                <tr>
+                    <th>PIN Code</th>
+                    <td>{{user.pin}}</td>
+                </tr>
+                <tr>
+                    <td colspan="2"><a class="background w-100 text-light btn" href="/update-profile/">Update</a></td>
+                </tr>
+            </table>
+        </div>
+        <div class="col-sm-6 col-12">
+            <h5 class="background text-light p-2 text-center">Cart Page</h4>
+                <div class="table-responsive">
+                    <table class='table table-striped table-hover table-bordered fs-5 text-center'>
+                        <tr>
+                            <th>Images</th>
+                            <th>Name</th>
+                            <th>Color</th>
+                            <th>Size</th>
+                            <th>Price</th>
+                            <th>Quantity</th>
+                            <th>Total</th>
+                        </tr>
+                        {% for k,i in cart.items %}
+                        <tr>
+                            <td><img src="{{i.pic}}" width="80px" class="rounded" height="80px"></td>
+                            <td>{{i.name}}</td>
+                            <td>{{i.color}}</td>
+                            <td>{{i.size}}</td>
+                            <td>{{i.price}}</td>
+                            <td>{{i.qty}}</td>
+                            <td>{{i.total}}</td>
+                        </tr>
+                        {% endfor %}
+                    </table>
+                </div>
+                <div class="table-responsive ">
+                    <table class="table table-striped table-hover table-bordered fs-5 text-center">
+                        <tr>
+                            <th>Total Amount</th>
+                            <td>&#8377;{{total}}</td>
+                        </tr>
+                        <tr>
+                            <th>Shipping Amount</th>
+                            <td>&#8377;{{shipping}}</td>
+                        </tr>
+                        <tr>
+                            <th>Final Amount</th>
+                            <td>&#8377;{{final}}</td>
+                        </tr>
+                        <form action="/order/" method="post">
+                            {% csrf_token %}
+                            <tr>
+                                <th>Payment Mode</th>
+                                <td>
+                                    <select name="mode" class="form-select">
+                                        <option value="COD">COD</option>
+                                        <option value="Net Banking">Net Banking / UPI / Card</option>
+                                    </select>
+                                </td>
+                            </tr>
+                            <tr>
+                                <th colspan="2"><button type="submit"class="btn btn-sm background text-light text-center w-100">Place Order</button></th>
+                            </tr>
+                        </form>
+                    </table>
+                </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

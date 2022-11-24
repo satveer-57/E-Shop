@@ -1,0 +1,28 @@
+.background{
+    background-color: blueviolet;
+}
+.btn:hover{
+    background-color: violet;
+    box-shadow: 0 0 10px whitesmoke;
+}
+.banner-section{
+    position: relative;
+}
+.banner-btn{
+    width: 200px;
+    position: absolute;
+    left: 50px;
+    padding:10px;
+}
+#banner-btn-1{
+    top:20%;
+}
+#banner-btn-2{
+    top:40%;
+}
+#banner-btn-3{
+    top:60%;
+}
+.card-title{
+    height: 50px;
+}
